@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Intelligence System - Intelligent Traffic Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-traffic-light"></i> Traffic Intelligence System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">🚦 Traffic Intelligence System v2.0</h1>
+            <p class="lead mb-4">AI-Powered Traffic Enforcement & Management Platform</p>
+            <p class="subtitle mb-4">Real-time vehicle detection, predictive analytics, and intelligent signal control</p>
+            <div class="hero-buttons">
+                <a href="#overview" class="btn btn-primary btn-lg me-2"><i class="fas fa-arrow-down"></i> Explore</a>
+                <a href="#faq" class="btn btn-outline-light btn-lg"><i class="fas fa-question-circle"></i> Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="overview-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-info-circle"></i> What is This Project?</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-video text-primary"></i> Computer Vision Engine</h5>
+                            <p class="card-text">Detects and tracks vehicles in real-time using YOLOv8 deep learning with DeepSORT multi-object tracking. Handles multi-camera streams simultaneously with advanced night vision enhancement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-gavel text-danger"></i> Traffic Enforcement</h5>
+                            <p class="card-text">Automatically detects violations: red lights, average speed violations, wrong-way drivers, triple riding, and mobile phone usage. Generates E-Challan PDFs with evidence and QR codes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-brain text-success"></i> Predictive Analytics</h5>
+                            <p class="card-text">LSTM-based forecasting predicts traffic congestion 2 minutes ahead. Anomaly detection identifies incidents automatically for faster emergency response.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-lightbulb text-warning"></i> Smart Signal Control</h5>
+                            <p class="card-text">Uses Reinforcement Learning (DQN/PPO) to optimize traffic signals dynamically. Achieved 34% higher throughput and 41% lower wait times vs traditional systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-star"></i> Core Features</h2>
+            
+            <!-- Enforcement Features -->
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <h4 class="mb-4"><i class="fas fa-shield-alt"></i> Enforcement Features</h4>
+                    <ul class="feature-list">
+                        <li><strong>Indian ANPR:</strong> License plate recognition tuned for MH/KA/DL formats</li>
+                        <li><strong>Red Light Detection:</strong> HSV-based signal detection with temporal validation</li>
+                        <li><strong>Average Speed Enforcement:</strong> Time-over-distance calculation across camera pairs</li>
+                        <li><strong>Wrong-Way Detection:</strong> Analyzes vehicle direction vectors via DeepSORT</li>
+                        <li><strong>Triple Riding Detection:</strong> Person count analysis on motorcycle detections</li>
+                        <li><strong>Mobile Phone Detection:</strong> Driver behavior monitoring during traffic stops</li>
+                        <li><strong>Repeat Offender Engine:</strong> 30/90-day multiplier penalties from violation history</li>
+                        <li><strong>E-Challan Generation:</strong> RTO-format PDF with evidence images & QR codes</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="mb-4"><i class="fas fa-cog"></i> System Features</h4>
+                    <ul class="feature-list">
+                        <li><strong>Shared Model Manager:</strong> Single YOLOv8n FP16 for all detectors (≤4GB VRAM)</li>
+                        <li><strong>Multi-Camera Support:</strong> Concurrent RTSP streams with asyncio processing</li>
+                        <li><strong>FastAPI Dashboard:</strong> Live violation feed, plate search, payment tracking</li>
+                        <li><strong>Night Vision:</strong> CLAHE + Gamma enhancement for low-light scenarios</li>
+                        <li><strong>PostgreSQL Integration:</strong> Professional database with Alembic migrations</li>
+                        <li><strong>REST API:</strong> 35+ endpoints for external system integration</li>
+                        <li><strong>WebSocket Streaming:</strong> Real-time 60FPS video feed streaming</li>
+                        <li><strong>Docker Support:</strong> Full containerization for cloud/edge deployment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-sitemap"></i> System Architecture</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="architecture-card">
+                        <h5 class="mb-3"><i class="fas fa-camera"></i> Layer 1: Perception (Vision)</h5>
+                        <p><strong>Technology:</strong> YOLOv8 + DeepSORT</p>
+                        <p><strong>Latency:</strong> >25ms on GPU</p>
+                        <p><strong>Output:</strong> Queue length, average speed, vehicle count, real-world metrics</p>
+                        <p><strong>Features:</strong> Automatic brightness/contrast correction, night mode, rain mode</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="architecture-card">
+                        <h5 class="mb-3"><i class="fas fa-chart-line"></i> Layer 2: Prediction (Foresight)</h5>
+                        <p><strong>Technology:</strong> Stacked LSTM Network</p>
+                        <p><strong>Input:</strong> Rolling 10-minute density history</p>
+                        <p><strong>Output:</strong> 2-minute congestion forecast probability</p>
+                        <p><strong>Purpose:</strong> Prepares signal control before traffic arrives</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="architecture-card">
+                        <h5 class="mb-3"><i class="fas fa-robot"></i> Layer 3: Decision (RL Agent)</h5>
+                        <p><strong>Algorithm:</strong> PPO (Proximal Policy Optimization)</p>
+                        <p><strong>Goal:</strong> Minimize wait time, maximize throughput</p>
+                        <p><strong>Safety:</strong> 3s Yellow + 2s All-Red safety buffers</p>
+                        <p><strong>Result:</strong> 34% throughput increase, 41% wait time reduction</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="architecture-card">
+                        <h5 class="mb-3"><i class="fas fa-server"></i> Layer 4: Backend (Enterprise)</h5>
+                        <p><strong>API:</strong> FastAPI with WebSockets</p>
+                        <p><strong>Database:</strong> PostgreSQL + Alembic migrations</p>
+                        <p><strong>Monitoring:</strong> Prometheus integration</p>
+                        <p><strong>Deployment:</strong> Docker + Docker Compose</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Metrics -->
+    <section class="metrics-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-chart-bar"></i> Performance Metrics</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h3 class="metric-number">+34%</h3>
+                        <p class="metric-label">Higher Throughput vs Fixed Timing</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h3 class="metric-number">-41%</h3>
+                        <p class="metric-label">Lower Wait Time vs Rule-Based</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h3 class="metric-number">25ms</h3>
+                        <p class="metric-label">Detection Latency on GPU</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h3 class="metric-number">≤4GB</h3>
+                        <p class="metric-label">GPU VRAM Required</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h3 class="metric-number">60FPS</h3>
+                        <p class="metric-label">Real-time Dashboard Streaming</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="metric-card">
+                        <h3 class="metric-number">35+</h3>
+                        <p class="metric-label">REST API Endpoints</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- Q1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                                    <i class="fas fa-check-circle text-success me-2"></i> What makes this project unique?
+                                </button>
+                            </h2>
+                            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>This project combines 4 AI technologies in one integrated system:</strong></p>
+                                    <ul>
+                                        <li><strong>Vision AI:</strong> YOLOv8 + DeepSORT for real-time vehicle detection and persistent tracking</li>
+                                        <li><strong>Predictive Analytics:</strong> LSTM networks forecast traffic 2 minutes ahead</li>
+                                        <li><strong>Reinforcement Learning:</strong> PPO algorithm optimizes signal timing dynamically (not rule-based!)</li>
+                                        <li><strong>Enforcement Automation:</strong> Detects 7+ violation types and generates RTO-format E-Challans automatically</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Industry-first features:</strong></p>
+                                    <ul>
+                                        <li>Indian ANPR tuned specifically for MH/KA/DL plate formats</li>
+                                        <li>34% throughput improvement over traditional fixed-timing signals</li>
+                                        <li>Multi-camera asyncio processing with shared GPU model (single YOLOv8 for all streams)</li>
+                                        <li>Runs on RTX 2050+ with only 4GB VRAM</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                                    <i class="fas fa-robot text-info me-2"></i> How does the AI signal control work?
+                                </button>
+                            </h2>
+                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Traditional systems:</strong> Use fixed timings (e.g., 30s cycle) or simple rule-based logic.</p>
+                                    <p><strong>Our AI approach:</strong> Uses Proximal Policy Optimization (PPO) reinforcement learning that:</p>
+                                    <ul>
+                                        <li>Learns to minimize total intersection wait time</li>
+                                        <li>Maximizes vehicle throughput across all lanes</li>
+                                        <li>Adapts dynamically to real-time traffic conditions</li>
+                                        <li>Incorporates LSTM predictions (knows traffic is coming before it arrives!)</li>
+                                        <li>Maintains safety buffers (3s Yellow phase, 2s All-Red)</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Result:</strong> 34% higher throughput, 41% lower average wait time compared to fixed-timing systems.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                                    <i class="fas fa-camera-video text-primary me-2"></i> Can it handle multiple cameras?
+                                </button>
+                            </h2>
+                            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Yes!</strong> This is one of our core strengths.</p>
+                                    <ul>
+                                        <li><strong>Multi-Camera Asyncio:</strong> Processes concurrent RTSP streams simultaneously</li>
+                                        <li><strong>Shared YOLOv8 Model:</strong> Single FP16 YOLOv8n model shared across ALL cameras (efficiency!)</li>
+                                        <li><strong>Load Balancing:</strong> Automatic queue management for frame processing</li>
+                                        <li><strong>Scalable:</strong> Add/remove cameras without restarting the system</li>
+                                        <li><strong>Multi-Source Support:</strong> RTSP, thermal cameras, LiDAR integration</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Low overhead:</strong> Shared model architecture keeps GPU memory usage at ≤4GB even with 4-8 simultaneous streams.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4">
+                                    <i class="fas fa-file-invoice text-danger me-2"></i> How does automatic E-Challan generation work?
+                                </button>
+                            </h2>
+                            <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Fully automated violation detection and enforcement:</strong></p>
+                                    <ul>
+                                        <li><strong>7+ Violation Types Detected:</strong>
+                                            <ul>
+                                                <li>Red light violations (with 1-frame grace period)</li>
+                                                <li>Average speed violations (cross-camera enforcement)</li>
+                                                <li>Wrong-way driving (direction vector analysis)</li>
+                                                <li>Triple riding on motorcycles</li>
+                                                <li>Mobile phone usage while driving</li>
+                                                <li>Repeat offender flagging</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>PDF Generation:</strong> RTO-format E-Challan with:
+                                            <ul>
+                                                <li>Vehicle license plate (ANPR confirmed)</li>
+                                                <li>Violation evidence images</li>
+                                                <li>QR code for payment/dispute</li>
+                                                <li>Timestamp and location data</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>Database Storage:</strong> All violations logged with metadata for legal compliance</li>
+                                        <li><strong>Repeat Multipliers:</strong> Auto-applies 30/90-day severity multipliers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5">
+                                    <i class="fas fa-chart-line text-success me-2"></i> What is the prediction system?
+                                </button>
+                            </h2>
+                            <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>LSTM-based Traffic Forecasting:</strong></p>
+                                    <ul>
+                                        <li><strong>Input:</strong> 10-minute rolling history of traffic density per lane</li>
+                                        <li><strong>Model:</strong> Stacked LSTM (Long Short-Term Memory) network</li>
+                                        <li><strong>Output:</strong> 2-minute "peak probability" forecast</li>
+                                        <li><strong>Use Case:</strong> The signal control system knows traffic is coming BEFORE it arrives and pre-adjusts timing</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Why this is powerful:</strong> Traditional systems only react to current traffic. Our system is proactive - it prepares for the next surge.</p>
+                                    <p><strong>Also includes:</strong> Anomaly detection to automatically flag incidents (accidents, disabled vehicles) for faster emergency response.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q6 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q6">
+                                    <i class="fas fa-moon text-warning me-2"></i> How does it work at night or in bad weather?
+                                </button>
+                            </h2>
+                            <div id="q6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Night Vision Enhancement (Advanced):</strong></p>
+                                    <ul>
+                                        <li><strong>CLAHE:</strong> Contrast Limited Adaptive Histogram Equalization for low-light enhancement</li>
+                                        <li><strong>Gamma Correction:</strong> Automatic brightness calibration based on lighting conditions</li>
+                                        <li><strong>Laplacian Variance Detection:</strong> Measures image blur/clarity to trigger enhancement</li>
+                                        <li><strong>Thermal Camera Support:</strong> Can integrate thermal imaging for day/night consistency</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>YOLOv8 Robustness:</strong> The model was trained on diverse datasets including rain, fog, and night conditions.</p>
+                                    <p><strong>Result:</strong> ANPR accuracy maintained at >90% even in challenging lighting conditions.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q7 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q7">
+                                    <i class="fas fa-server text-secondary me-2"></i> What hardware do I need?
+                                </button>
+                            </h2>
+                            <div id="q7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Minimum Requirements:</strong></p>
+                                    <ul>
+                                        <li><strong>CPU:</strong> Any modern processor (Intel i5+, AMD Ryzen 5+)</li>
+                                        <li><strong>RAM:</strong> 8GB minimum</li>
+                                        <li><strong>GPU:</strong> Optional (falls back to CPU)</li>
+                                        <li><strong>GPU VRAM:</strong> 4GB if using GPU (RTX 2050+, RTX 3050, RTX 4050, etc.)</li>
+                                        <li><strong>Storage:</strong> 5GB for models and dependencies</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Recommended for production:</strong></p>
+                                    <ul>
+                                        <li>8-core CPU or better</li>
+                                        <li>16GB+ RAM</li>
+                                        <li>RTX 4070 or better GPU for 4-6 simultaneous camera streams</li>
+                                        <li>SSD storage (≥256GB) for database and logs</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Deployment Options:</strong> Docker containerization supports cloud (AWS, Azure, GCP) or edge devices (Jetson Xavier, RTX Orin).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q8 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q8">
+                                    <i class="fas fa-api text-info me-2"></i> Can I integrate this with existing systems?
+                                </button>
+                            </h2>
+                            <div id="q8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Yes! Full REST API with 35+ endpoints:</strong></p>
+                                    <ul>
+                                        <li><strong>Real-time endpoints:</strong> Current traffic status, live snapshots</li>
+                                        <li><strong>Historical data:</strong> Hourly/daily analytics, trends, peak hour analysis</li>
+                                        <li><strong>Violation management:</strong> Query violations, filter by plate, view evidence</li>
+                                        <li><strong>Signal control:</strong> Extend/shorten green phase, set custom timing</li>
+                                        <li><strong>WebSocket streaming:</strong> 60FPS live video feed for dashboard integration</li>
+                                        <li><strong>Report export:</strong> Daily/weekly traffic reports</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Integration examples include:</strong> Existing CCTV systems, traffic management centers, payment gateways, emergency services.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q9 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q9">
+                                    <i class="fas fa-lock text-danger me-2"></i> Is my data safe and compliant?
+                                </button>
+                            </h2>
+                            <div id="q9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Data Security & Compliance:</strong></p>
+                                    <ul>
+                                        <li><strong>PostgreSQL Database:</strong> Production-grade SQL database with encrypted connections</li>
+                                        <li><strong>Alembic Migrations:</strong> Version-controlled schema for data integrity</li>
+                                        <li><strong>RTO-Format E-Challans:</strong> Legally compliant with Indian traffic rules</li>
+                                        <li><strong>Evidence Storage:</strong> Violation images stored securely with metadata</li>
+                                        <li><strong>QR Code Tracking:</strong> Dispute/payment tracking for transparency</li>
+                                        <li><strong>Docker Containerization:</strong> Network isolation and access control</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Auditing:</strong> All violations logged with timestamps, camera IDs, and evidence for legal compliance and transparency.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q10 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q10">
+                                    <i class="fas fa-book text-primary me-2"></i> How do I get started?
+                                </button>
+                            </h2>
+                            <div id="q10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Quick Start (Windows PowerShell):</strong></p>
+                                    <pre><code>git clone https://github.com/sahilborhade77/traffic.git
+cd traffic
+.\setup.ps1 --dev --gpu
+.\venv\Scripts\Activate.ps1
+python main.py</code></pre>
+                                    <p><strong>Quick Start (Linux/macOS):</strong></p>
+                                    <pre><code>git clone https://github.com/sahilborhade77/traffic.git
+cd traffic
+bash setup.sh --dev --gpu
+source venv/bin/activate
+python main.py</code></pre>
+                                    <p class="mt-3"><strong>What happens:</strong></p>
+                                    <ul>
+                                        <li>Installs Python dependencies</li>
+                                        <li>Downloads YOLOv8 pre-trained models</li>
+                                        <li>Sets up PostgreSQL database</li>
+                                        <li>Launches the dashboard on http://localhost:8000</li>
+                                    </ul>
+                                    <p class="mt-3"><strong>See documentation:</strong> README.md, API_DOCUMENTATION.md, DEPLOYMENT.md for detailed guides.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to Transform Traffic Management?</h2>
+            <p class="lead mb-4">Try the Traffic Intelligence System today and see the difference AI can make.</p>
+            <p class="text-muted">Production-ready | Enterprise-grade | Open Source (MIT License)</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6><i class="fas fa-info-circle"></i> About</h6>
+                    <p>Traffic Intelligence System v2.0 - An industrial-grade AI traffic management platform.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6><i class="fas fa-link"></i> Quick Links</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#overview" class="text-muted">Overview</a></li>
+                        <li><a href="#features" class="text-muted">Features</a></li>
+                        <li><a href="#architecture" class="text-muted">Architecture</a></li>
+                        <li><a href="#faq" class="text-muted">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6><i class="fas fa-code"></i> Tech Stack</h6>
+                    <p class="small text-muted">YOLOv8 • DeepSORT • LSTM • PPO • FastAPI • PostgreSQL • Docker</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center text-muted small mb-0">© 2026 Traffic Intelligence System | MIT License</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
